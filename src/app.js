@@ -1,9 +1,9 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
-// const authRoutes = require("./routes/auth.route.js");
 const authRoutes = require("./routes/auth.routes.js");
 const testRoutes = require("./routes/test.Routes.js");
 const postRoutes = require("./routes/post.Routes.js");
+const commentRoutes = require("./routes/comment.routes.js");
 
 const app = express();
 
@@ -17,6 +17,7 @@ app.get("/", (req, res)=>{
 app.use("/api/auth", authRoutes);
 app.use("/api/test", testRoutes);
 app.use("/api/posts", postRoutes);
+app.use("/api/comments",commentRoutes);
 
 
 

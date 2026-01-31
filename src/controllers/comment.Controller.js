@@ -67,7 +67,23 @@ async function deleteComment(req, res) {
   }
 }
 
+async function getCommentsByPost(req, res) {
+  try {
+    const { postId } = req.params;
+
+    const comments = await commentModel.find({ post: postId })
+      .populate("user", "name email")
+      .sort({ createdAt: -1 });
+
+    res.json({ comments });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+}
+
 module.exports = {
     createComment,
     deleteComment,
+    getCommentsByPost
 }

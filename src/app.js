@@ -5,9 +5,13 @@ const testRoutes = require("./routes/test.Routes.js");
 const postRoutes = require("./routes/post.Routes.js");
 const commentRoutes = require("./routes/comment.routes.js");
 const userRoutes = require("./routes/user.routes.js");
+const cors = require("cors");
 
 const app = express();
 
+app.use(cors({
+    origin: "http://localhost:5173"
+}))
 app.use(cookieParser());
 app.use(express.json());
 
